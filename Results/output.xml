@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.0 on win32)" generated="20211027 18:30:02.523" rpa="false" schemaversion="2">
+<suite id="s1" name="Adrenalin" source="C:\development\robot-scripts\Adrenalin\Tests\Adrenalin.robot">
+<kw name="Begin Web Test" library="CommonKeyword" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211027 18:30:02.789" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20211027 18:30:02.773" endtime="20211027 18:30:03.978"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>.5 second</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20211027 18:30:03.978" endtime="20211027 18:30:03.978"/>
+</kw>
+<kw name="Set Selenium Timeout" library="SeleniumLibrary">
+<arg>180 seconds</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" starttime="20211027 18:30:03.978" endtime="20211027 18:30:04.495"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:02.773" endtime="20211027 18:30:04.495"/>
+</kw>
+<test id="s1-t1" name="Prerequisites">
+<kw name="Load" library="WebKeyword">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ADRENALINPAGE}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211027 18:30:04.495" level="INFO">Opening url 'https://www.adrenalinmedia.com.au/'</msg>
+<status status="PASS" starttime="20211027 18:30:04.495" endtime="20211027 18:30:11.012"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:04.495" endtime="20211027 18:30:11.012"/>
+</kw>
+<kw name="Verify Page Loaded" library="WebKeyword">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>class=icon-adrenalin</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:30:11.013" endtime="20211027 18:30:11.526"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:11.012" endtime="20211027 18:30:11.526"/>
+</kw>
+<doc>Prerequisites - Opening the URL</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:04.495" endtime="20211027 18:30:11.526"/>
+</test>
+<test id="s1-t2" name="Open Menu">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:11.528" endtime="20211027 18:30:12.566"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:17.569" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:12.566" endtime="20211027 18:30:17.569"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:17.569" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:30:17.569" endtime="20211027 18:30:18.655"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:11.528" endtime="20211027 18:30:18.655"/>
+</kw>
+<kw name="Verify Tabs Displayed" library="WebKeyword">
+<kw name="Create List" library="BuiltIn">
+<var>@{MENULIST}</var>
+<arg>What we do</arg>
+<arg>Our work</arg>
+<arg>Clients</arg>
+<arg>Insights</arg>
+<arg>Culture</arg>
+<arg>Contact us</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20211027 18:30:18.656" level="INFO">@{MENULIST} = [ What we do | Our work | Clients | Insights | Culture | Contact us ]</msg>
+<status status="PASS" starttime="20211027 18:30:18.656" endtime="20211027 18:30:18.656"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20211027 18:30:18.657" level="INFO">@{list} = [ ]</msg>
+<status status="PASS" starttime="20211027 18:30:18.656" endtime="20211027 18:30:18.657"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>class=reveal-text</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20211027 18:30:19.171" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="4928a9ad-342a-4772-bf04-1d9ce251aa46")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20211027 18:30:18.657" endtime="20211027 18:30:19.171"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="4928a9ad-342a-4772-bf04-1d9ce251aa46")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:19.689" level="INFO">${text} = What we do</msg>
+<status status="PASS" starttime="20211027 18:30:19.171" endtime="20211027 18:30:19.689"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:19.689" endtime="20211027 18:30:19.690"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:19.171" endtime="20211027 18:30:19.690"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="80e45787-398a-4c7b-bb6c-4c8b3f7e81dd")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:20.206" level="INFO">${text} = Our work</msg>
+<status status="PASS" starttime="20211027 18:30:19.690" endtime="20211027 18:30:20.206"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:20.206" endtime="20211027 18:30:20.206"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:19.690" endtime="20211027 18:30:20.206"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="134a88ae-4d3b-42c6-b980-1f2ef8e07731")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:20.721" level="INFO">${text} = Clients</msg>
+<status status="PASS" starttime="20211027 18:30:20.207" endtime="20211027 18:30:20.721"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:20.721" endtime="20211027 18:30:20.722"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:20.207" endtime="20211027 18:30:20.722"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="8396fe4a-35b2-498f-9922-88407b176805")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:21.240" level="INFO">${text} = Insights</msg>
+<status status="PASS" starttime="20211027 18:30:20.722" endtime="20211027 18:30:21.240"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:21.240" endtime="20211027 18:30:21.241"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:20.722" endtime="20211027 18:30:21.241"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="4a9b3c4d-868e-4495-993c-34c62fbd9acd")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:21.756" level="INFO">${text} = Culture</msg>
+<status status="PASS" starttime="20211027 18:30:21.241" endtime="20211027 18:30:21.756"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:21.756" endtime="20211027 18:30:21.756"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:21.241" endtime="20211027 18:30:21.756"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="fbb52e08fad2960e83543f37a4f993ae", element="0c275f28-bbee-4897-bcef-5b92cb57a5c6")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${text}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:22.274" level="INFO">${text} = Contact us</msg>
+<status status="PASS" starttime="20211027 18:30:21.757" endtime="20211027 18:30:22.274"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20211027 18:30:22.274" endtime="20211027 18:30:22.274"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:21.756" endtime="20211027 18:30:22.274"/>
+</iter>
+<status status="PASS" starttime="20211027 18:30:19.171" endtime="20211027 18:30:22.275"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${list}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211027 18:30:22.275" level="INFO">['What we do', 'Our work', 'Clients', 'Insights', 'Culture', 'Contact us']</msg>
+<status status="PASS" starttime="20211027 18:30:22.275" endtime="20211027 18:30:22.275"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${MENULIST}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211027 18:30:22.275" level="INFO">['What we do', 'Our work', 'Clients', 'Insights', 'Culture', 'Contact us']</msg>
+<status status="PASS" starttime="20211027 18:30:22.275" endtime="20211027 18:30:22.275"/>
+</kw>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${list}</arg>
+<arg>${MENULIST}</arg>
+<doc>Fails if given lists are unequal.</doc>
+<status status="PASS" starttime="20211027 18:30:22.275" endtime="20211027 18:30:22.276"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:18.655" endtime="20211027 18:30:22.276"/>
+</kw>
+<doc>Test Case 1 - Opening Hamburger Menu</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:11.527" endtime="20211027 18:30:22.276"/>
+</test>
+<test id="s1-t3" name="Mouse Hover to What do we do Tab">
+<kw name="Mouse Hover to What we do" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/services/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:30:22.278" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/services/']'.</msg>
+<status status="PASS" starttime="20211027 18:30:22.278" endtime="20211027 18:30:23.591"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:24.593" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:30:23.591" endtime="20211027 18:30:24.593"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike__inner</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:24.593" endtime="20211027 18:30:25.628"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:26.629" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:30:25.628" endtime="20211027 18:30:26.629"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:22.278" endtime="20211027 18:30:26.629"/>
+</kw>
+<doc>Test Case 2 - Mouse Hover to what do we do</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:22.277" endtime="20211027 18:30:26.630"/>
+</test>
+<test id="s1-t4" name="Open What We Do Tab From Menu">
+<kw name="Click What We Do Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:26.632" endtime="20211027 18:30:27.664"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:30.667" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:27.664" endtime="20211027 18:30:30.667"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>What we do</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:30.667" level="INFO">Clicking link 'What we do'.</msg>
+<status status="PASS" starttime="20211027 18:30:30.667" endtime="20211027 18:30:32.274"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:26.631" endtime="20211027 18:30:32.274"/>
+</kw>
+<kw name="Verify Services Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Services</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:30:32.275" endtime="20211027 18:30:33.523"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:35.538" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:33.523" endtime="20211027 18:30:35.538"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:32.274" endtime="20211027 18:30:35.538"/>
+</kw>
+<doc>Test Case 3 - Open the What we do tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:26.631" endtime="20211027 18:30:35.538"/>
+</test>
+<test id="s1-t5" name="Mouse Hover to Our work Tab">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:35.542" endtime="20211027 18:30:36.569"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:41.569" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:36.569" endtime="20211027 18:30:41.569"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:41.569" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:30:41.569" endtime="20211027 18:30:42.602"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:35.541" endtime="20211027 18:30:42.602"/>
+</kw>
+<kw name="Mouse Hover to Our work" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/work/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:30:42.603" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/work/']'.</msg>
+<status status="PASS" starttime="20211027 18:30:42.603" endtime="20211027 18:30:43.900"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:44.911" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:30:43.900" endtime="20211027 18:30:44.911"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-6.col-lg-offset-1 &gt; div &gt; div:nth-child(2) &gt; a &gt; div &gt; div</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:44.911" endtime="20211027 18:30:45.934"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:46.943" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:30:45.934" endtime="20211027 18:30:46.943"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:42.602" endtime="20211027 18:30:46.943"/>
+</kw>
+<doc>Test Case 4 - Mouse Hover to Our work</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:35.540" endtime="20211027 18:30:46.943"/>
+</test>
+<test id="s1-t6" name="Open Our Work Tab From Menu">
+<kw name="Click Our Work Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:46.943" endtime="20211027 18:30:47.968"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:50.970" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:47.968" endtime="20211027 18:30:50.970"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Our work</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:30:50.970" level="INFO">Clicking link 'Our work'.</msg>
+<status status="PASS" starttime="20211027 18:30:50.970" endtime="20211027 18:30:52.560"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:46.943" endtime="20211027 18:30:52.560"/>
+</kw>
+<kw name="Verify Work Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Work</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:30:52.561" endtime="20211027 18:30:53.811"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:30:55.819" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:53.811" endtime="20211027 18:30:55.819"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:52.560" endtime="20211027 18:30:55.819"/>
+</kw>
+<doc>Test Case 5 - Open the Our Work tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:46.943" endtime="20211027 18:30:55.819"/>
+</test>
+<test id="s1-t7" name="Mouse Hover to Clients Tab">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:30:55.821" endtime="20211027 18:30:56.849"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:01.864" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:30:56.849" endtime="20211027 18:31:01.864"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:01.865" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:31:01.864" endtime="20211027 18:31:02.920"/>
+</kw>
+<status status="PASS" starttime="20211027 18:30:55.821" endtime="20211027 18:31:02.920"/>
+</kw>
+<kw name="Mouse Hover to Clients" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/clients/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:31:02.921" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/clients/']'.</msg>
+<status status="PASS" starttime="20211027 18:31:02.921" endtime="20211027 18:31:04.210"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:05.218" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:04.210" endtime="20211027 18:31:05.218"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-6.col-lg-offset-1 &gt; div &gt; div:nth-child(3) &gt; a &gt; div &gt; div</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:05.218" endtime="20211027 18:31:06.262"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:07.277" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:06.262" endtime="20211027 18:31:07.277"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:02.921" endtime="20211027 18:31:07.277"/>
+</kw>
+<doc>Test Case 6 - Mouse Hover to Clients</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:30:55.820" endtime="20211027 18:31:07.278"/>
+</test>
+<test id="s1-t8" name="Open Clients Tab From Menu">
+<kw name="Click Clients Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:07.280" endtime="20211027 18:31:08.313"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:11.318" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:08.313" endtime="20211027 18:31:11.318"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Clients</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:11.318" level="INFO">Clicking link 'Clients'.</msg>
+<status status="PASS" starttime="20211027 18:31:11.318" endtime="20211027 18:31:12.902"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:07.279" endtime="20211027 18:31:12.902"/>
+</kw>
+<kw name="Verify Clients Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Clients</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:31:12.903" endtime="20211027 18:31:13.419"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:15.420" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:13.419" endtime="20211027 18:31:15.420"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:12.902" endtime="20211027 18:31:15.420"/>
+</kw>
+<doc>Test Case 7 - Open the Clients tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:07.279" endtime="20211027 18:31:15.420"/>
+</test>
+<test id="s1-t9" name="Mouse Hover to Insights Tab">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:15.422" endtime="20211027 18:31:16.460"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:21.472" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:16.460" endtime="20211027 18:31:21.472"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:21.472" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:31:21.472" endtime="20211027 18:31:22.522"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:15.422" endtime="20211027 18:31:22.522"/>
+</kw>
+<kw name="Mouse Hover to Insights" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/blog/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:31:22.523" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/blog/']'.</msg>
+<status status="PASS" starttime="20211027 18:31:22.523" endtime="20211027 18:31:23.836"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:24.851" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:23.836" endtime="20211027 18:31:24.851"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-6.col-lg-offset-1 &gt; div &gt; div:nth-child(4) &gt; a &gt; div &gt; div</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:24.851" endtime="20211027 18:31:25.887"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:26.900" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:25.887" endtime="20211027 18:31:26.900"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:22.523" endtime="20211027 18:31:26.900"/>
+</kw>
+<doc>Test Case 8 - Mouse Hover to Insights</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:15.421" endtime="20211027 18:31:26.901"/>
+</test>
+<test id="s1-t10" name="Open Insights Tab From Menu">
+<kw name="Click Insights Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:26.902" endtime="20211027 18:31:27.940"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:30.941" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:27.940" endtime="20211027 18:31:30.941"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Insights</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:30.941" level="INFO">Clicking link 'Insights'.</msg>
+<status status="PASS" starttime="20211027 18:31:30.941" endtime="20211027 18:31:32.525"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:26.902" endtime="20211027 18:31:32.525"/>
+</kw>
+<kw name="Verify Insights Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Blog</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:31:32.527" endtime="20211027 18:31:33.755"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:35.761" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:33.755" endtime="20211027 18:31:35.761"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:32.526" endtime="20211027 18:31:35.761"/>
+</kw>
+<doc>Test Case 9 - Open the Insights tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:26.901" endtime="20211027 18:31:35.762"/>
+</test>
+<test id="s1-t11" name="Mouse Hover to Culture Tab">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:35.764" endtime="20211027 18:31:36.791"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:41.805" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:36.791" endtime="20211027 18:31:41.805"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:41.805" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:31:41.805" endtime="20211027 18:31:42.836"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:35.763" endtime="20211027 18:31:42.836"/>
+</kw>
+<kw name="Mouse Hover to Culture" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/culture/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:31:42.837" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/culture/']'.</msg>
+<status status="PASS" starttime="20211027 18:31:42.837" endtime="20211027 18:31:44.143"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:45.154" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:44.143" endtime="20211027 18:31:45.154"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-6.col-lg-offset-1 &gt; div &gt; div:nth-child(5) &gt; a &gt; div</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:45.154" endtime="20211027 18:31:46.209"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:47.212" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:31:46.209" endtime="20211027 18:31:47.212"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:42.836" endtime="20211027 18:31:47.212"/>
+</kw>
+<doc>Test Case 10 - Mouse Hover to Culture</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:35.763" endtime="20211027 18:31:47.212"/>
+</test>
+<test id="s1-t12" name="Open Culture Tab From Menu">
+<kw name="Click Culture Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:47.212" endtime="20211027 18:31:48.260"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:51.269" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:48.260" endtime="20211027 18:31:51.269"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Culture</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:31:51.269" level="INFO">Clicking link 'Culture'.</msg>
+<status status="PASS" starttime="20211027 18:31:51.269" endtime="20211027 18:31:52.844"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:47.212" endtime="20211027 18:31:52.844"/>
+</kw>
+<kw name="Verify Culture Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Culture</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:31:52.845" endtime="20211027 18:31:53.370"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:31:55.385" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:53.370" endtime="20211027 18:31:55.385"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:52.845" endtime="20211027 18:31:55.385"/>
+</kw>
+<doc>Test Case 11 - Open the Culture tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:47.212" endtime="20211027 18:31:55.386"/>
+</test>
+<test id="s1-t13" name="Mouse Hover to Contact Us Tab">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:31:55.388" endtime="20211027 18:31:56.418"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:01.426" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:31:56.418" endtime="20211027 18:32:01.426"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:01.426" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:32:01.426" endtime="20211027 18:32:02.464"/>
+</kw>
+<status status="PASS" starttime="20211027 18:31:55.388" endtime="20211027 18:32:02.464"/>
+</kw>
+<kw name="Mouse Hover to Contact Us" library="MouseHover">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=//a[@href='/contact/']</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20211027 18:32:02.466" level="INFO">Simulating Mouse Over on element 'xpath=//a[@href='/contact/']'.</msg>
+<status status="PASS" starttime="20211027 18:32:02.466" endtime="20211027 18:32:03.764"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:04.773" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:03.764" endtime="20211027 18:32:04.773"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-6.col-lg-offset-1 &gt; div &gt; div:nth-child(6) &gt; a &gt; div &gt; div</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:04.773" endtime="20211027 18:32:05.812"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:06.812" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:05.812" endtime="20211027 18:32:06.812"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:02.465" endtime="20211027 18:32:06.812"/>
+</kw>
+<doc>Test Case 12 - Mouse Hover to Contact Us</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:31:55.387" endtime="20211027 18:32:06.812"/>
+</test>
+<test id="s1-t14" name="Open Contact us Tab From Menu">
+<kw name="Click Contact us Tab" library="OpenTab">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=hover-strike</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:06.812" endtime="20211027 18:32:07.830"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:10.830" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:07.830" endtime="20211027 18:32:10.830"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Contact us</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:10.830" level="INFO">Clicking link 'Contact us'.</msg>
+<status status="PASS" starttime="20211027 18:32:10.830" endtime="20211027 18:32:12.411"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:06.812" endtime="20211027 18:32:12.411"/>
+</kw>
+<kw name="Verify Contact us Tab Are Displayed" library="OpenTab">
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Let’s work together</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:32:12.413" endtime="20211027 18:32:14.363"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:16.370" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:14.363" endtime="20211027 18:32:16.370"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:12.412" endtime="20211027 18:32:16.370"/>
+</kw>
+<kw name="Close Contact us Tab" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=contact-page-body__close</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:16.371" endtime="20211027 18:32:17.399"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:18.406" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:17.399" endtime="20211027 18:32:18.406"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=contact-page-body__close</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:18.406" level="INFO">Clicking element 'class=contact-page-body__close'.</msg>
+<status status="PASS" starttime="20211027 18:32:18.406" endtime="20211027 18:32:19.515"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:16.371" endtime="20211027 18:32:19.515"/>
+</kw>
+<doc>Test Case 13 - Open the Clients tab</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:32:06.812" endtime="20211027 18:32:19.516"/>
+</test>
+<test id="s1-t15" name="Open FaceBook Social Link">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:19.518" endtime="20211027 18:32:20.561"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:25.562" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:20.561" endtime="20211027 18:32:25.562"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:25.562" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:32:25.562" endtime="20211027 18:32:26.606"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:19.517" endtime="20211027 18:32:26.606"/>
+</kw>
+<kw name="Open FB Social Link" library="OpenSocialLink">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:27.619" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:26.607" endtime="20211027 18:32:27.619"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(1)</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:27.619" endtime="20211027 18:32:28.665"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:29.668" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:28.665" endtime="20211027 18:32:29.668"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(1)</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:29.668" level="INFO">Clicking link 'css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(1)'.</msg>
+<status status="PASS" starttime="20211027 18:32:29.668" endtime="20211027 18:32:31.279"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:34.279" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:31.279" endtime="20211027 18:32:34.279"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:26.606" endtime="20211027 18:32:34.279"/>
+</kw>
+<kw name="Verify Adrenalin FB Page" library="OpenSocialLink">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20211027 18:32:34.791" level="INFO">${handles} = ['CDwindow-EB51253105144111A0D55FCA9C902485', 'CDwindow-E93FD1DB23771F7E202A0F8133F579D6']</msg>
+<status status="PASS" starttime="20211027 18:32:34.280" endtime="20211027 18:32:34.791"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:32:34.791" endtime="20211027 18:32:39.393"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Facebook</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:32:39.393" endtime="20211027 18:32:39.918"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:42.923" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:39.918" endtime="20211027 18:32:42.923"/>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20211027 18:32:42.923" endtime="20211027 18:32:43.496"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:32:43.496" endtime="20211027 18:32:44.519"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:46.519" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:44.519" endtime="20211027 18:32:46.519"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:34.280" endtime="20211027 18:32:46.519"/>
+</kw>
+<doc>Test Case 14 - Open Facebook Social Link</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:32:19.517" endtime="20211027 18:32:46.519"/>
+</test>
+<test id="s1-t16" name="Open LinkedIn Social Link">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:46.519" endtime="20211027 18:32:47.531"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:52.541" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:47.531" endtime="20211027 18:32:52.541"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:52.541" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:32:52.541" endtime="20211027 18:32:53.577"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:46.519" endtime="20211027 18:32:53.577"/>
+</kw>
+<kw name="Open LinkedIn Social Link" library="OpenSocialLink">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:54.579" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:53.578" endtime="20211027 18:32:54.579"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(2)</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:32:54.579" endtime="20211027 18:32:55.604"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:32:56.617" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:32:55.604" endtime="20211027 18:32:56.617"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(2)</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:32:56.617" level="INFO">Clicking link 'css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(2)'.</msg>
+<status status="PASS" starttime="20211027 18:32:56.617" endtime="20211027 18:32:58.211"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:01.223" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:32:58.211" endtime="20211027 18:33:01.223"/>
+</kw>
+<status status="PASS" starttime="20211027 18:32:53.577" endtime="20211027 18:33:01.223"/>
+</kw>
+<kw name="Verify Adrenalin LinkedIn Page" library="OpenSocialLink">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20211027 18:33:01.736" level="INFO">${handles} = ['CDwindow-EB51253105144111A0D55FCA9C902485', 'CDwindow-5A50BB0A0C42345ABEBDE23525E2032B']</msg>
+<status status="PASS" starttime="20211027 18:33:01.225" endtime="20211027 18:33:01.736"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:33:01.736" endtime="20211027 18:33:06.385"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>LinkedIn</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:33:06.385" endtime="20211027 18:33:06.911"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:09.914" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:06.911" endtime="20211027 18:33:09.914"/>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20211027 18:33:09.914" endtime="20211027 18:33:10.487"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:33:10.487" endtime="20211027 18:33:11.527"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:13.539" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:11.527" endtime="20211027 18:33:13.539"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:01.224" endtime="20211027 18:33:13.539"/>
+</kw>
+<doc>Test Case 15 - Open LinkedIn Social Link</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:32:46.519" endtime="20211027 18:33:13.539"/>
+</test>
+<test id="s1-t17" name="Open Instagram Social Link">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:33:13.539" endtime="20211027 18:33:14.561"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:19.569" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:14.561" endtime="20211027 18:33:19.569"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:33:19.569" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:33:19.569" endtime="20211027 18:33:20.604"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:13.539" endtime="20211027 18:33:20.604"/>
+</kw>
+<kw name="Open Adrenalin Instagram Social Link" library="OpenSocialLink">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:21.609" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:33:20.605" endtime="20211027 18:33:21.609"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(3)</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:33:21.609" endtime="20211027 18:33:22.647"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:23.662" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:33:22.647" endtime="20211027 18:33:23.662"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(3)</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:33:23.662" level="INFO">Clicking link 'css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(3)'.</msg>
+<status status="PASS" starttime="20211027 18:33:23.662" endtime="20211027 18:33:25.240"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:28.255" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:25.240" endtime="20211027 18:33:28.255"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:20.605" endtime="20211027 18:33:28.255"/>
+</kw>
+<kw name="Verify Adrenalin Instagram Page" library="OpenSocialLink">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20211027 18:33:28.763" level="INFO">${handles} = ['CDwindow-EB51253105144111A0D55FCA9C902485', 'CDwindow-C9F8DDD0BDA2079A383C81F8EDAA4CEC']</msg>
+<status status="PASS" starttime="20211027 18:33:28.256" endtime="20211027 18:33:28.763"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:33:28.763" endtime="20211027 18:33:33.400"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>adrenalinmedia</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:33:33.400" endtime="20211027 18:33:33.916"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:36.935" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:33.916" endtime="20211027 18:33:36.935"/>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20211027 18:33:36.935" endtime="20211027 18:33:37.503"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:33:37.503" endtime="20211027 18:33:38.529"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:40.540" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:38.529" endtime="20211027 18:33:40.540"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:28.256" endtime="20211027 18:33:40.540"/>
+</kw>
+<doc>Test Case 16 - Open Instagram Social Link</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:33:13.539" endtime="20211027 18:33:40.541"/>
+</test>
+<test id="s1-t18" name="Open Twitter Social Link">
+<kw name="Click Menu Button" library="WebKeyword">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>class=nav__btn</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:33:40.543" endtime="20211027 18:33:41.579"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:46.596" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:41.579" endtime="20211027 18:33:46.596"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>class=nav__btn__inner</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211027 18:33:46.596" level="INFO">Clicking element 'class=nav__btn__inner'.</msg>
+<status status="PASS" starttime="20211027 18:33:46.596" endtime="20211027 18:33:47.645"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:40.542" endtime="20211027 18:33:47.645"/>
+</kw>
+<kw name="Open Adrenalin Twitter Social Link" library="OpenSocialLink">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:48.654" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:33:47.646" endtime="20211027 18:33:48.654"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(4)</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211027 18:33:48.654" endtime="20211027 18:33:49.689"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:50.702" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20211027 18:33:49.689" endtime="20211027 18:33:50.702"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(4)</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20211027 18:33:50.702" level="INFO">Clicking link 'css=#root &gt; nav &gt; div.nav__pane &gt; div &gt; div &gt; div &gt; div &gt; div.col-xs-12.col-md-6.col-lg-5 &gt; div &gt; div.nav__social &gt; div.social-links &gt; a:nth-child(4)'.</msg>
+<status status="PASS" starttime="20211027 18:33:50.702" endtime="20211027 18:33:52.282"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:33:55.283" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:33:52.282" endtime="20211027 18:33:55.283"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:47.645" endtime="20211027 18:33:55.283"/>
+</kw>
+<kw name="Verify Adrenalin Twitter Page" library="OpenSocialLink">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20211027 18:33:55.802" level="INFO">${handles} = ['CDwindow-EB51253105144111A0D55FCA9C902485', 'CDwindow-C8FC848DFBC2D9BA4556DABFD22E87C8']</msg>
+<status status="PASS" starttime="20211027 18:33:55.285" endtime="20211027 18:33:55.802"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:33:55.802" endtime="20211027 18:34:00.398"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>Adrenalin</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20211027 18:34:00.398" endtime="20211027 18:34:00.937"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:34:03.944" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20211027 18:34:00.937" endtime="20211027 18:34:03.944"/>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20211027 18:34:03.944" endtime="20211027 18:34:04.510"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20211027 18:34:04.510" endtime="20211027 18:34:05.528"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20211027 18:34:07.529" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20211027 18:34:05.528" endtime="20211027 18:34:07.529"/>
+</kw>
+<status status="PASS" starttime="20211027 18:33:55.284" endtime="20211027 18:34:07.529"/>
+</kw>
+<doc>Test Case 17 - Open LinkedIn Social Link</doc>
+<tag>Smoke</tag>
+<status status="PASS" starttime="20211027 18:33:40.542" endtime="20211027 18:34:07.530"/>
+</test>
+<kw name="End Web Test" library="CommonKeyword" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211027 18:34:07.533" endtime="20211027 18:34:10.103"/>
+</kw>
+<status status="PASS" starttime="20211027 18:34:07.532" endtime="20211027 18:34:10.104"/>
+</kw>
+<doc>Adrenalin testing activities</doc>
+<status status="PASS" starttime="20211027 18:30:02.523" endtime="20211027 18:34:10.104"/>
+</suite>
+<statistics>
+<total>
+<stat pass="18" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="18" fail="0" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat pass="18" fail="0" skip="0" id="s1" name="Adrenalin">Adrenalin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,13 @@
+﻿Hello! 
+
+
+Here is the link for the Adrenalin Test Cases: [Adrenalin Test Cases](https://docs.google.com/spreadsheets/d/1-rUfNqy4sAr_CFh-y8ZdKJ0LSHUaixnh4RmG2wQYLRc/edit#gid=0) 
+
+
+I have also shared the Google Sheet document to Ms. Arhlyn.
+
+
+Also I created a doc file of the Test Cases using Markdown format attached in the zipped file as well.
+
+
+Thanks!
